@@ -1,7 +1,7 @@
 <Mod
 		name="Noitlocke"
 		description="A Nuzzlock inspired mod that removes spells you cast from the spawn pool"
-		tags="spells"
+		tags="gameplay,spells,total conversions, game modes"
 		dont_upload_folders=".git|.vscode"
 	> 
 	</Mod>
