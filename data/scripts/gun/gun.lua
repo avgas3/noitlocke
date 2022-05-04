@@ -414,7 +414,15 @@ function move_hand_to_discarded()
 			if HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
 				RemoveFlagPersistent("noitlocke_" .. string.lower(action.id))
 				AddFlagPersistent("REMOVED_noitlocke_" .. string.lower(action.id))
+				
+				removed = ModSettingGet('noitlocke.removed') .. "," .. GameTextGet(action.name)
+				ModSettingSet('noitlocke.removed', removed)
+				-- ModSettingsSetNextValue("noitlocke.removed", removed, false)
 				GamePrint(GameTextGet(action.name) .. " has been removed.")
+			
+
+
+			end
 			action.is_identified = true
 		end
 

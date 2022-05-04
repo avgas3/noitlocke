@@ -1,53 +1,33 @@
 dofile("data/scripts/lib/mod_settings.lua") -- see this file for documentation on some of the features.
 
--- This file can't access other files from this or other mods in all circumstances.
--- Settings will be automatically saved.
--- Settings don't have access unsafe lua APIs.
-
--- Use ModSettingGet() in the game to query settings.
--- For some settings (for example those that affect world generation) you might want to retain the current value until a certain point, even
--- if the player has changed the setting while playing.
--- To make it easy to define settings like that, each setting has a "scope" (e.g. MOD_SETTING_SCOPE_NEW_GAME) that will define when the changes
--- will actually become visible via ModSettingGet(). In the case of MOD_SETTING_SCOPE_NEW_GAME the value at the start of the run will be visible
--- until the player starts a new game.
--- ModSettingSetNextValue() will set the buffered value, that will later become visible via ModSettingGet(), unless the setting scope is MOD_SETTING_SCOPE_RUNTIME.
-
-function mod_setting_bool_custom( mod_id, gui, in_main_menu, im_id, setting )
-	local value = ModSettingGetNextValue( mod_setting_get_id(mod_id,setting) )
+function reset_noitlocke_button( mod_id, gui, in_main_menu, im_id, setting )
 	local text = "Reset Noitlocke" --setting.ui_name .. " - " .. GameTextGet( value and "$option_on" or "$option_off" )
 
 	if GuiButton( gui, im_id, mod_setting_group_x_offset, 0, text ) then
-		ModSettingSetNextValue( mod_setting_get_id(mod_id,setting), not value, false )
 		dofile("data/scripts/gun/gun_actions.lua")
 		for i,a in ipairs(actions) do
 			AddFlagPersistent("noitlocke_" .. string.lower(a.id))
-			RemoveFlagPersistent("REMOVE_noitlocke_" .. string.lower(a.id))
-		end
+			RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
+		end	
 		GamePrint("Noitlocke Reset, all spells are now available.")
-			
-		
 		
 	end
-
 	mod_setting_tooltip( mod_id, gui, in_main_menu, setting )
 end
 
-function mod_setting_change_callback( mod_id, gui, in_main_menu, setting, old_value, new_value  )
-	print( tostring(new_value) )
-end
 
-local mod_id = "example" -- This should match the name of your mod's folder.
+local mod_id = "noitlocke" -- This should match the name of your mod's folder.
 mod_settings_version = 1 -- This is a magic global that can be used to migrate settings to new mod versions. call mod_settings_get_version() before mod_settings_update() to get the old value. 
 mod_settings = 
 {
 	{
-		id = "custom_ui",
-		ui_name = "This setting has got some custom UI",
-		ui_description = "",
-		value_default = true,
+		id = "reset",
+		ui_name = "Reset Noitlocke",
+		ui_description = "Add all spells to spawn pool",
 		scope = MOD_SETTING_SCOPE_RUNTIME,
-		ui_fn = mod_setting_bool_custom, -- custom widget
+		ui_fn = reset_noitlocke_button, -- custom widget
 	}
+
 }
 
 
