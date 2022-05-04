@@ -14,14 +14,16 @@ dofile("data/scripts/lib/mod_settings.lua") -- see this file for documentation o
 
 function mod_setting_bool_custom( mod_id, gui, in_main_menu, im_id, setting )
 	local value = ModSettingGetNextValue( mod_setting_get_id(mod_id,setting) )
-	local text = "Initialize Noitlocke" --setting.ui_name .. " - " .. GameTextGet( value and "$option_on" or "$option_off" )
+	local text = "Reset Noitlocke" --setting.ui_name .. " - " .. GameTextGet( value and "$option_on" or "$option_off" )
 
 	if GuiButton( gui, im_id, mod_setting_group_x_offset, 0, text ) then
 		ModSettingSetNextValue( mod_setting_get_id(mod_id,setting), not value, false )
 		dofile("data/scripts/gun/gun_actions.lua")
 		for i,a in ipairs(actions) do
 			AddFlagPersistent("noitlocke_" .. string.lower(a.id))
+			RemoveFlagPersistent("REMOVE_noitlocke_" .. string.lower(a.id))
 		end
+		GamePrint("Noitlocke Reset, all spells are now available.")
 			
 		
 		

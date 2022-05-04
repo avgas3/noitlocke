@@ -411,7 +411,10 @@ function move_hand_to_discarded()
 
 		if identify then
 			ActionUsed( action.inventoryitem_id )
-			RemoveFlagPersistent("noitlocke_" .. string.lower(action.id))
+			if HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
+				RemoveFlagPersistent("noitlocke_" .. string.lower(action.id))
+				AddFlagPersistent("REMOVED_noitlocke_" .. string.lower(action.id))
+				GamePrint(GameTextGet(action.name) .. " has been removed.")
 			action.is_identified = true
 		end
 

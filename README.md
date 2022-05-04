@@ -11,11 +11,11 @@ Version  0.1:
 
 - The player's starting wands, as well as the "prebuilt" wands in the first level are unaffected, although casting the spells will prevent them from spawning later in the run.
 
-- Spells stay removed from the spawn pool until hitting "Initialize Noitlocke" in the settings again. 
+- Spells stay removed from the spawn pool until hitting "Reset Noitlocke" in the settings again. 
 
 TODO:
 
-- Automatically "initialize noitlocke" when starting a run with the mod enabled for the first time.
+- Automatically "Reset noitlocke" when starting a run with the mod enabled for the first time.
 - GUI element to indicate how many (and which?) spells have been removed already.
 - Add Noitlocke gameplay to perks, options to toggle spells and perks individually.
 - Log to the bottom left console.
