@@ -1,4 +1,17 @@
-ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/noitlocke/files/actions.lua" ) -- Basically dofile("mods/example/files/actions.lua") will appear at the end of gun_actions.lua
+dofile("data/scripts/gun/gun_actions.lua")
+if not HasFlagPersistent("noitlocke") then
+    for i,a in ipairs(actions) do
+        AddFlagPersistent("noitlocke_" .. string.lower(a.id))
+        RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
+    end	
+    AddFlagPersistent("noitlocke")
+    GamePrint("Noitlocke Reset, all spells are now available.")
+end
+
+for i,a in ipairs(actions) do
+    AddFlagPersistent("noitlocke_" .. string.lower(a.id))
+    RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
+end	
 
 function OnPausePreUpdate()
     removed = {}
@@ -24,7 +37,6 @@ function OnPausePreUpdate()
     GuiLayoutEnd(gui)
     GuiEndScrollContainer(gui)
     if GuiButton( gui, 2, 80,280,"[Reset?]" ) then
-		dofile("data/scripts/gun/gun_actions.lua")
 		for i,a in ipairs(actions) do
 			AddFlagPersistent("noitlocke_" .. string.lower(a.id))
 			RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
@@ -34,3 +46,4 @@ function OnPausePreUpdate()
 end
 
 
+ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/noitlocke/files/actions.lua" ) -- Basically dofile("mods/example/files/actions.lua") will appear at the end of gun_actions.lua

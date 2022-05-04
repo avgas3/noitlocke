@@ -15,7 +15,6 @@ Version  0.2:
 
 TODO:
 
-- Automatically "Reset noitlocke" when starting a run with the mod enabled for the first time.
 - Add Noitlocke gameplay to perks, options to toggle spells and perks individually.
 - Individually un-remove spells from the list
 - Probabilistic spell removal?
