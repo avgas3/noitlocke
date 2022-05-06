@@ -1,6 +1,6 @@
 <Mod
 		name="Noitlocke"
-		version="0.22"
+		version="0.3"
 		
 		tags="gameplay,spells,total conversions, game modes"
 		dont_upload_folders=".git|.vscode"
