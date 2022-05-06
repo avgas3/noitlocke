@@ -411,7 +411,8 @@ function move_hand_to_discarded()
 
 		if identify then
 			ActionUsed( action.inventoryitem_id )
-			if HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
+			
+			if ModSettingGet('noitlocke.spells_enabled') and HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
 				RemoveFlagPersistent("noitlocke_" .. string.lower(action.id))
 				AddFlagPersistent("REMOVED_noitlocke_" .. string.lower(action.id))
 				

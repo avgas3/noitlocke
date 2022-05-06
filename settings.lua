@@ -26,7 +26,21 @@ mod_settings =
 		ui_description = "Add all spells to spawn pool",
 		scope = MOD_SETTING_SCOPE_RUNTIME,
 		ui_fn = reset_noitlocke_button, -- custom widget
-	}
+	},
+	{
+		id = "spells_enabled",
+		ui_name = "Enable Spell Removal",
+		ui_description = "Enable Noitlocke spell removal",
+		scope = MOD_SETTING_SCOPE_RUNTIME,
+		default_value = true
+	},
+	{
+		id = "perks_enabled",
+		ui_name = "Enable perk Removal",
+		ui_description = "Enable Noitlocke perk removal",
+		scope = MOD_SETTING_SCOPE_RUNTIME,
+		default_value = true
+	},
 
 }
 

@@ -8,11 +8,6 @@ if not HasFlagPersistent("noitlocke") then
     GamePrint("Noitlocke Reset, all spells are now available.")
 end
 
-for i,a in ipairs(actions) do
-    AddFlagPersistent("noitlocke_" .. string.lower(a.id))
-    RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
-end	
-
 function OnPausePreUpdate()
     removed = {}
     dofile("data/scripts/gun/gun_actions.lua")
