@@ -53,7 +53,7 @@ function OnPausePreUpdate()
     if ModSettingGet("noitlocke.remove_now") == "no" then
         -- Spells Queued Pause GUI
         GuiZSet(gui, z)
-        GuiText(gui, 65,5, "Queued Spells:")
+        GuiText(gui, 85,5, "Queued Spells:")
         GuiBeginScrollContainer(gui, 1,82,20,70,250)
         GuiLayoutBeginVertical(gui,0,0)
         for i,spell in ipairs(queued_spells) do
