@@ -412,14 +412,18 @@ function move_hand_to_discarded()
 		if identify then
 			ActionUsed( action.inventoryitem_id )
 			
-			if ModSettingGet('noitlocke.spells_enabled') and HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
+			if HasFlagPersistent("noitlocke_" .. string.lower(action.id)) and ModSettingGet("noitlocke.remove_now") == "yes" then
+
 				RemoveFlagPersistent("noitlocke_" .. string.lower(action.id))
-				AddFlagPersistent("REMOVED_noitlocke_" .. string.lower(action.id))
 				GamePrint(GameTextGet(action.name) .. " has been removed.")
-			
-
-
+				
+			elseif not HasFlagPersistent("noitlocke_" .. string.lower(action.id) .. "_queued") and ModSettingGet("noitlocke.remove_now") == "no" and HasFlagPersistent("noitlocke_" .. string.lower(action.id)) then
+				AddFlagPersistent("noitlocke_" .. string.lower(action.id) .. "_queued")
+				GamePrint(GameTextGet(action.name) .. " has been queued for removal.")
 			end
+
+
+			
 			action.is_identified = true
 		end
 

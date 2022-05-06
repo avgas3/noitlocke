@@ -7,7 +7,6 @@ function reset_noitlocke_button( mod_id, gui, in_main_menu, im_id, setting )
 		dofile("data/scripts/gun/gun_actions.lua")
 		for i,a in ipairs(actions) do
 			AddFlagPersistent("noitlocke_" .. string.lower(a.id))
-			RemoveFlagPersistent("REMOVED_noitlocke_" .. string.lower(a.id))
 		end	
 		GamePrint("Noitlocke Reset, all spells are now available.")
 		
@@ -21,26 +20,22 @@ mod_settings_version = 1 -- This is a magic global that can be used to migrate s
 mod_settings = 
 {
 	{
+		id = "remove_now",
+		ui_name = "Game Mode",
+		ui_description = "Spells you cast are removed\nfrom the spawn pool when\nyou start the next run,\nor as soon as you cast them.",
+		value_default = "yes",
+		values = { {"yes","Removed on Cast"}, {"no","Removed on New Run"} },
+		scope = MOD_SETTING_SCOPE_NEW_GAME,
+	},
+	{
 		id = "reset",
 		ui_name = "Reset Noitlocke",
 		ui_description = "Add all spells to spawn pool",
 		scope = MOD_SETTING_SCOPE_RUNTIME,
 		ui_fn = reset_noitlocke_button, -- custom widget
 	},
-	{
-		id = "spells_enabled",
-		ui_name = "Enable Spell Removal",
-		ui_description = "Enable Noitlocke spell removal",
-		scope = MOD_SETTING_SCOPE_RUNTIME,
-		value_default = true
-	},
-	{
-		id = "perks_enabled",
-		ui_name = "Enable perk Removal",
-		ui_description = "Enable Noitlocke perk removal",
-		scope = MOD_SETTING_SCOPE_RUNTIME,
-		value_default = true
-	},
+
+
 
 }
 

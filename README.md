@@ -1,20 +1,14 @@
 # Noitlocke
 ## A Nuzzlocke inspired mod that removes spells you cast from the spawn pool.
 
-Version  0.2:
+Add an extra challenge to your runs by "locking" spells from spawning as you cast them. Like the Nuzlocke challenge for which the mod is named, this adds an extra layer of strategy onto your runs.
 
-- Loading this mod will temporarily set/overwrite the `spawn_requires_flag` parameter for each spell in the game to `noitlocke_spell_id` where `spell_id` is, of course, each spell's ID. 
+You might not normally pass up on adding a chainsaw to your damage wand, but if you're already close to Kolmi you might want to save it for the next run. You could start using the Add Mana you found in the fungal caverns right away, or you could save it and hope another one spawns before the Jungle.
 
-- Before starting your first run with Noitlocke loaded, be sure to hit "Initialize Noitlocke" in the mod settings or pause menu. This will create the required "flags" to unlock all the spells. This will not affect your vanilla unlock progress.
+## Instructions
 
-- Whenever you cast a spell, it's corresponding `noitlocke_spell_id` flag is removed, preventing it from spawning on wands/shops/etc. in the future.
+In the settings, select whether you want spells to be queued for removal at the start of the next run, or be removed as soon as you cast it. 
 
-- The player's starting wands, as well as the "prebuilt" wands in the first level are unaffected, although casting the spells will prevent them from spawning later in the run.
+You can see the list of removed/queued spells in the pause menu. 
 
-- Spells stay removed from the spawn pool until hitting "Reset Noitlocke" in the settings again. 
-
-TODO:
-
-- Add Noitlocke gameplay to perks, options to toggle spells and perks individually.
-- Individually un-remove spells from the list
-- Probabilistic spell removal?
+Reset the spells from the mod settings menu. 
