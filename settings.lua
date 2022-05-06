@@ -7,6 +7,7 @@ function reset_noitlocke_button( mod_id, gui, in_main_menu, im_id, setting )
 		dofile("data/scripts/gun/gun_actions.lua")
 		for i,a in ipairs(actions) do
 			AddFlagPersistent("noitlocke_" .. string.lower(a.id))
+			RemoveFlagPersistent("noitlocke_" .. string.lower(a.id .. "_queued"))
 		end	
 		GamePrint("Noitlocke Reset, all spells are now available.")
 		
