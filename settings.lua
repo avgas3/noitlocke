@@ -32,14 +32,14 @@ mod_settings =
 		ui_name = "Enable Spell Removal",
 		ui_description = "Enable Noitlocke spell removal",
 		scope = MOD_SETTING_SCOPE_RUNTIME,
-		default_value = true
+		value_default = true
 	},
 	{
 		id = "perks_enabled",
 		ui_name = "Enable perk Removal",
 		ui_description = "Enable Noitlocke perk removal",
 		scope = MOD_SETTING_SCOPE_RUNTIME,
-		default_value = true
+		value_default = true
 	},
 
 }
